@@ -2,6 +2,9 @@
 
 A DLL mod for **Scrap Mechanic** that enables mods to read and write JSON files in the game's `$TEMP_DATA` directory, a sandboxed scratch space that is automatically wiped when the game exits.
 
+> [!NOTE]
+> You can detect whether `SM-ModTempDataSupport` is installed by checking `sm.tempDataMod_installed` (May be changed to `sm.modTempDataSupport_installed` in a later version) is set to true.
+
 ## Features
 
 - Exposes `$TEMP_DATA` write access to other mods via JSON (without dll mod its read-only)
