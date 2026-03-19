@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{4e329d87-efc0-4b88-a048-83d6045ee240}</ProjectGuid>
+    <RootNamespace>SMModTempDataSupport</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;SMMODTEMPDATASUPPORT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;SMMODTEMPDATASUPPORT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_ITERATOR_DEBUG_LEVEL=0;_DEBUG;SMMODTEMPDATASUPPORT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;SMMODTEMPDATASUPPORT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Dependencies\MinHook\buffer.c" />
+    <ClCompile Include="Dependencies\MinHook\hde\hde32.c" />
+    <ClCompile Include="Dependencies\MinHook\hde\hde64.c" />
+    <ClCompile Include="Dependencies\MinHook\hook.c" />
+    <ClCompile Include="Dependencies\MinHook\trampoline.c" />
+    <ClCompile Include="Dependencies\SmSdk\Color.cpp" />
+    <ClCompile Include="Dependencies\SmSdk\CreationManager.cpp" />
+    <ClCompile Include="Dependencies\SmSdk\DirectoryManager.cpp" />
+    <ClCompile Include="Dependencies\SmSdk\GameState.cpp" />
+    <ClCompile Include="Dependencies\SmSdk\MyPlayer.cpp" />
+    <ClCompile Include="Dependencies\SmSdk\OptionsItemSlider.cpp" />
+    <ClCompile Include="Dependencies\SmSdk\OptionsSubMenuBase.cpp" />
+    <ClCompile Include="Dependencies\SmSdk\Player.cpp" />
+    <ClCompile Include="Dependencies\SmSdk\PointerGetters.cpp" />
+    <ClCompile Include="Dependencies\SmSdk\VerticalStackBox.cpp" />
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Dependencies\boost\config.hpp" />
+    <ClInclude Include="Dependencies\boost\config\abi\borland_prefix.hpp" />
+    <ClInclude Include="Dependencies\boost\config\abi\borland_suffix.hpp" />
+    <ClInclude Include="Dependencies\boost\config\abi\msvc_prefix.hpp" />
+    <ClInclude Include="Dependencies\boost\config\abi\msvc_suffix.hpp" />
+    <ClInclude Include="Dependencies\boost\config\abi_prefix.hpp" />
+    <ClInclude Include="Dependencies\boost\config\abi_suffix.hpp" />
+    <ClInclude Include="Dependencies\boost\config\assert_cxx03.hpp" />
+    <ClInclude Include="Dependencies\boost\config\assert_cxx11.hpp" />
+    <ClInclude Include="Dependencies\boost\config\assert_cxx14.hpp" />
+    <ClInclude Include="Dependencies\boost\config\assert_cxx17.hpp" />
+    <ClInclude Include="Dependencies\boost\config\assert_cxx20.hpp" />
+    <ClInclude Include="Dependencies\boost\config\assert_cxx98.hpp" />
+    <ClInclude Include="Dependencies\boost\config\auto_link.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\borland.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\clang.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\clang_version.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\codegear.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\comeau.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\common_edg.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\compaq_cxx.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\cray.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\diab.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\digitalmars.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\gcc.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\gcc_xml.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\greenhills.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\hp_acc.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\intel.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\kai.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\metrowerks.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\mpw.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\nvcc.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\pathscale.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\pgi.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\sgi_mipspro.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\sunpro_cc.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\vacpp.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\visualc.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\xlcpp.hpp" />
+    <ClInclude Include="Dependencies\boost\config\compiler\xlcpp_zos.hpp" />
+    <ClInclude Include="Dependencies\boost\config\detail\cxx_composite.hpp" />
+    <ClInclude Include="Dependencies\boost\config\detail\posix_features.hpp" />
+    <ClInclude Include="Dependencies\boost\config\detail\select_compiler_config.hpp" />
+    <ClInclude Include="Dependencies\boost\config\detail\select_platform_config.hpp" />
+    <ClInclude Include="Dependencies\boost\config\detail\select_stdlib_config.hpp" />
+    <ClInclude Include="Dependencies\boost\config\detail\suffix.hpp" />
+    <ClInclude Include="Dependencies\boost\config\header_deprecated.hpp" />
+    <ClInclude Include="Dependencies\boost\config\helper_macros.hpp" />
+    <ClInclude Include="Dependencies\boost\config\no_tr1\cmath.hpp" />
+    <ClInclude Include="Dependencies\boost\config\no_tr1\complex.hpp" />
+    <ClInclude Include="Dependencies\boost\config\no_tr1\functional.hpp" />
+    <ClInclude Include="Dependencies\boost\config\no_tr1\memory.hpp" />
+    <ClInclude Include="Dependencies\boost\config\no_tr1\utility.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\aix.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\amigaos.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\beos.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\bsd.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\cloudabi.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\cray.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\cygwin.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\haiku.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\hpux.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\irix.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\linux.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\macos.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\qnxnto.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\solaris.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\symbian.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\vms.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\vxworks.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\wasm.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\win32.hpp" />
+    <ClInclude Include="Dependencies\boost\config\platform\zos.hpp" />
+    <ClInclude Include="Dependencies\boost\config\pragma_message.hpp" />
+    <ClInclude Include="Dependencies\boost\config\requires_threads.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\dinkumware.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\libcomo.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\libcpp.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\libstdcpp3.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\modena.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\msl.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\roguewave.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\sgi.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\stlport.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\vacpp.hpp" />
+    <ClInclude Include="Dependencies\boost\config\stdlib\xlcpp_zos.hpp" />
+    <ClInclude Include="Dependencies\boost\config\user.hpp" />
+    <ClInclude Include="Dependencies\boost\config\warning_disable.hpp" />
+    <ClInclude Include="Dependencies\boost\config\workaround.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\detail\hash_mix.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\detail\hash_range.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\detail\hash_tuple.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\detail\limits.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\extensions.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\hash.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\hash_fwd.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\is_contiguous_range.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\is_described_class.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\is_range.hpp" />
+    <ClInclude Include="Dependencies\boost\container_hash\is_unordered_range.hpp" />
+    <ClInclude Include="Dependencies\boost\cstdint.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\bases.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\class.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\descriptor_by_name.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\descriptor_by_pointer.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\detail\bases.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\detail\compute_base_modifiers.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\detail\config.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\detail\cx_streq.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\detail\list.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\detail\members.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\detail\pp_for_each.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\detail\pp_utilities.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\detail\void_t.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\enum.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\enumerators.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\enum_from_string.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\enum_to_string.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\members.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\modifiers.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\modifier_description.hpp" />
+    <ClInclude Include="Dependencies\boost\describe\operators.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\algorithm.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\allocator_utilities.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\atomic_count.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\basic_pointerbuf.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\binary_search.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\bitmask.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\call_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\catch_exceptions.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\compressed_pair.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\container_fwd.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\fenv.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\has_default_constructor.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\identifier.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\indirect_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\interlocked.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\is_incrementable.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\is_sorted.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\is_xxx.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\iterator.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\lcast_precision.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\lightweight_main.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\lightweight_mutex.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\lightweight_test.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\lightweight_test_report.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\lightweight_thread.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\named_template_params.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\no_exceptions_support.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\numeric_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\ob_compressed_pair.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\quick_allocator.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\reference_content.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\scoped_enum_emulation.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\select_type.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\sp_typeinfo.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\templated_streams.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\utf8_codecvt_facet.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\utf8_codecvt_facet.ipp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\access_rights.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\apc.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\basic_types.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\bcrypt.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\character_code_conversion.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\condition_variable.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\config.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\critical_section.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\crypt.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\dbghelp.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\debugapi.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\detail\deprecated_namespace.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\directory_management.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\dll.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\environment.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\error_codes.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\error_handling.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\event.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\file_management.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\file_mapping.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\get_current_process.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\get_current_process_id.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\get_current_thread.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\get_current_thread_id.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\get_last_error.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\get_process_times.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\get_system_directory.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\get_thread_times.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\handles.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\handle_info.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\heap_memory.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\init_once.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\jobs.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\limits.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\local_memory.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\memory.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\mutex.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\overlapped.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\page_protection_flags.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\pipes.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\priority_class.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\process.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\security.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\semaphore.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\shell.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\show_window.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\srw_lock.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\stack_backtrace.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\synchronization.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\system.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\thread.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\thread_pool.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\time.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\timers.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\tls.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\wait.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\winapi\waitable_timer.hpp" />
+    <ClInclude Include="Dependencies\boost\detail\workaround.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\factory.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\forward_adapter.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\hash.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\hash\extensions.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\hash\hash.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\hash\hash_fwd.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\hash_fwd.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\identity.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\lightweight_forward_adapter.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\overloaded_function.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\overloaded_function\config.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\overloaded_function\detail\base.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\overloaded_function\detail\function_type.hpp" />
+    <ClInclude Include="Dependencies\boost\functional\value_factory.hpp" />
+    <ClInclude Include="Dependencies\boost\io\detail\buffer_fill.hpp" />
+    <ClInclude Include="Dependencies\boost\io\detail\ostream_guard.hpp" />
+    <ClInclude Include="Dependencies\boost\io\ios_state.hpp" />
+    <ClInclude Include="Dependencies\boost\io\nullstream.hpp" />
+    <ClInclude Include="Dependencies\boost\io\ostream_joiner.hpp" />
+    <ClInclude Include="Dependencies\boost\io\ostream_put.hpp" />
+    <ClInclude Include="Dependencies\boost\io\quoted.hpp" />
+    <ClInclude Include="Dependencies\boost\io_fwd.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\algorithm.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\bind.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\config.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mpl_common.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_append.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_copy_if.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_count.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_fold.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_front.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_is_list.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_list.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_map_find.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_min_element.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_plus.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_remove_if.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_rename.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_void.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\detail\mp_with_index.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\function.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\integer_sequence.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\integral.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\list.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\map.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\mpl.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\mpl_list.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\mpl_tuple.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\set.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\tuple.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\utility.hpp" />
+    <ClInclude Include="Dependencies\boost\mp11\version.hpp" />
+    <ClInclude Include="Dependencies\boost\static_assert.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\add_const.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\add_cv.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\add_lvalue_reference.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\add_pointer.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\add_reference.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\add_rvalue_reference.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\add_volatile.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\aligned_storage.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\alignment_of.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\alignment_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\arithmetic_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\array_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\broken_compiler_spec.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\common_type.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\composite_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\conditional.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\config.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\conjunction.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\conversion_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\copy_cv.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\copy_cv_ref.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\copy_reference.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\cv_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\decay.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\declval.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\bool_trait_def.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\bool_trait_undef.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\common_arithmetic_type.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\common_type_impl.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\composite_member_pointer_type.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\composite_pointer_type.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\config.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\detector.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\has_binary_operator.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\has_postfix_operator.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\has_prefix_operator.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\ice_and.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\ice_eq.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\ice_not.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\ice_or.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_function_cxx_03.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_function_cxx_11.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_function_msvc10_fix.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_function_ptr_helper.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_function_ptr_tester.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_likely_lambda.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_member_function_pointer_cxx_03.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_member_function_pointer_cxx_11.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_mem_fun_pointer_impl.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_mem_fun_pointer_tester.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\is_rvalue_reference_msvc10_fix.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\mp_defer.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\template_arity_spec.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detail\yes_no_type.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detected.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\detected_or.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\disjunction.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\enable_if.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\extent.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\floating_point_promotion.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\function_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_bit_and.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_bit_and_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_bit_or.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_bit_or_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_bit_xor.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_bit_xor_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_complement.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_dereference.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_divides.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_divides_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_equal_to.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_greater.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_greater_equal.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_left_shift.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_left_shift_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_less.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_less_equal.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_logical_and.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_logical_not.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_logical_or.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_minus.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_minus_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_modulus.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_modulus_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_multiplies.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_multiplies_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_negate.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_new_operator.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_nothrow_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_nothrow_constructor.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_nothrow_copy.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_nothrow_destructor.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_not_equal_to.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_operator.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_plus.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_plus_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_post_decrement.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_post_increment.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_pre_decrement.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_pre_increment.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_right_shift.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_right_shift_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_trivial_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_trivial_constructor.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_trivial_copy.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_trivial_destructor.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_trivial_move_assign.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_trivial_move_constructor.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_unary_minus.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_unary_plus.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\has_virtual_destructor.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\ice.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\integral_constant.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\integral_promotion.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\intrinsics.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_abstract.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_arithmetic.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_array.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_assignable.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_base_and_derived.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_base_of.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_base_of_tr1.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_bounded_array.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_class.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_complete.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_complex.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_compound.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_const.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_constructible.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_convertible.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_copy_assignable.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_copy_constructible.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_default_constructible.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_destructible.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_detected.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_detected_convertible.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_detected_exact.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_empty.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_enum.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_final.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_float.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_floating_point.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_function.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_fundamental.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_integral.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_list_constructible.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_lvalue_reference.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_member_function_pointer.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_member_object_pointer.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_member_pointer.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_noncopyable.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_nothrow_move_assignable.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_nothrow_move_constructible.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_nothrow_swappable.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_object.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_pod.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_pointer.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_polymorphic.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_reference.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_rvalue_reference.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_same.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_scalar.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_scoped_enum.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_signed.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_stateless.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_trivially_copyable.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_unbounded_array.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_union.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_unscoped_enum.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_unsigned.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_virtual_base_of.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_void.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\is_volatile.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\make_signed.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\make_unsigned.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\make_void.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\negation.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\nonesuch.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\object_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\promote.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\rank.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\reference_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\remove_all_extents.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\remove_bounds.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\remove_const.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\remove_cv.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\remove_cv_ref.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\remove_extent.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\remove_pointer.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\remove_reference.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\remove_volatile.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\same_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\transform_traits.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\type_identity.hpp" />
+    <ClInclude Include="Dependencies\boost\type_traits\type_with_alignment.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\basic_name_generator.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\config.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\md5.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\random_provider.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\random_provider_arc4random.ipp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\random_provider_bcrypt.ipp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\random_provider_detect_platform.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\random_provider_getentropy.ipp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\random_provider_getrandom.ipp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\random_provider_include_platform.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\random_provider_posix.ipp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\random_provider_wincrypt.ipp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\sha1.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\uuid_generic.ipp" />
+    <ClInclude Include="Dependencies\boost\uuid\detail\uuid_x86.ipp" />
+    <ClInclude Include="Dependencies\boost\uuid\entropy_error.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\name_generator.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\name_generator_md5.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\name_generator_sha1.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\nil_generator.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\random_generator.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\string_generator.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\uuid.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\uuid_generators.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\uuid_hash.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\uuid_io.hpp" />
+    <ClInclude Include="Dependencies\boost\uuid\uuid_serialize.hpp" />
+    <ClInclude Include="Dependencies\boost\version.hpp" />
+    <ClInclude Include="Dependencies\LuaJIT\lauxlib.h" />
+    <ClInclude Include="Dependencies\LuaJIT\lua.h" />
+    <ClInclude Include="Dependencies\LuaJIT\lua.hpp" />
+    <ClInclude Include="Dependencies\LuaJIT\luaconf.h" />
+    <ClInclude Include="Dependencies\LuaJIT\luajit.h" />
+    <ClInclude Include="Dependencies\LuaJIT\luajit_rolling.h" />
+    <ClInclude Include="Dependencies\LuaJIT\lualib.h" />
+    <ClInclude Include="Dependencies\MinHook\buffer.h" />
+    <ClInclude Include="Dependencies\MinHook\hde\hde32.h" />
+    <ClInclude Include="Dependencies\MinHook\hde\hde64.h" />
+    <ClInclude Include="Dependencies\MinHook\hde\pstdint.h" />
+    <ClInclude Include="Dependencies\MinHook\hde\table32.h" />
+    <ClInclude Include="Dependencies\MinHook\hde\table64.h" />
+    <ClInclude Include="Dependencies\MinHook\MinHook.h" />
+    <ClInclude Include="Dependencies\MinHook\trampoline.h" />
+    <ClInclude Include="Dependencies\SmSdk\AreaTriggerManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\AudioManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Base\Aligned16Base.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Base\InputTarget.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Base\NetObj.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Base\Task.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\BlobData.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\boost_include.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\bullet_include.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Character.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\CharacterManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\config.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\ContainerManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Creation\BodyJointPhysicsProxy.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Creation\ChildShape.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Creation\ControllerBase.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Creation\CreationManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Creation\Joint.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Creation\JointPhysicsProxy.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Creation\RigidBody.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Creation\Shape.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\d3d11_include.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\DirectoryManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\fmod_include.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\GameSettings.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\GameState.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\AudioOptionsMenu.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\CompoundButton.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\ControlOptionsMenu.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\DisplayOptionsMenu.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\GameplayOptionsMenu.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\GraphicsOptionsMenu.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\GuiBase.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\GuiInterface.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\GuiSystemManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\HudGui2.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\InGameGuiManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\InGameGuiManagerInterface.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\InventoryGui.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\MainMenuRootGui.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\OptionsItemBase.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\OptionsItemSlider.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\OptionsMenu.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\OptionsSubMenuBase.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\PaintToolGui.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\RadioButtonSet.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Gui\VerticalStackBox.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Harvestable\Harvestable.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Harvestable\HarvestableManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Harvestable\HarvestablePhysicsProxy.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\InputManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\jsoncpp_include.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\mygui_include.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\MyPlayer.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\NetObjManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Network\ListenServer.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Network\NetworkClient.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Network\NetworkServer.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Network\SteamNetworkClient.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Network\SteamNetworkSend.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Network\SteamNetworkServer.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\offsets.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Pathfinder.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Physics\AreaTriggerProxy.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Physics\CharacterPhysicsProxy.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Physics\Physics.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Physics\PhysicsProxy.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Player.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\PlayerManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\PortalManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Rendering\Material.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Rendering\MaterialManager.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Rendering\rend_resources.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\StaticValues.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\steamapi_include.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\TimestampCheck.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Tool\ClientTool.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Tool\IToolImpl.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Tool\IToolNetworkData.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Tool\PaintTool.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Tool\Tool.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\unreferenced_params.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Util\Color.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Util\Console.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Util\Hashing.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Util\Memory.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\Util\StaticVariable.hpp" />
+    <ClInclude Include="Dependencies\SmSdk\win_include.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Dependencies\LuaJIT\lua51.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dependencies\LuaJIT\lua51.pdb" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

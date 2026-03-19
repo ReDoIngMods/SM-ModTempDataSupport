@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="SM-ModTempDataSupport/SM-ModTempDataSupport.vcxproj" Id="4e329d87-efc0-4b88-a048-83d6045ee240" />
+</Solution>
