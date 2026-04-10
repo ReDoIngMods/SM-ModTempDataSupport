@@ -157,18 +157,15 @@ inline static bool WriteToFile(const std::string& path, const std::string& data)
 }
 
 inline static std::string TranslateToContentUUID(const std::string& path, const std::string& uuid) {
-    std::string result = path;
-    const std::string prefixes[] = { "$CONTENT_PATH", "$MOD_DATA" };
-
+    static constexpr std::string prefixes[] = { "$CONTENT_DATA", "$MOD_DATA" };
     for (const std::string& prefix : prefixes) {
-        if (result.rfind(prefix, 0) != 0)
+        if (path.rfind(prefix, 0) != 0)
             continue;
 
-        result = "$CONTENT_" + uuid + result.substr(prefix.size());
-        break;
+        return "$CONTENT_" + uuid + path.substr(prefix.size());
     }
 
-    return result;
+    return path;
 }
 
 int hook_sm_json_save(lua_State* L) {
@@ -183,10 +180,8 @@ int hook_sm_json_save(lua_State* L) {
 	const char* path = luaL_checklstring(L, 2, &pathLength);
 	std::string pathStr(path, pathLength);
 
-    if (pathStr.ends_with("/description.json")) {
-		luaL_error(L, "'%s' not a valid call point.", pathStr.data());
-        return 0;
-    }
+    if (pathStr.ends_with("/description.json"))
+        return luaL_error(L, "'%s' not a valid call point.", pathStr.data());
 
     lua_getfield(L, LUA_REGISTRYINDEX, "VMPtr");
     LuaVM* luaVM = reinterpret_cast<LuaVM*>(lua_touserdata(L, -1));
@@ -195,31 +190,25 @@ int hook_sm_json_save(lua_State* L) {
 	const std::string currentlyExecutingMod = boost::uuids::to_string(luaVM->m_currentlyExecutingMod);
 	const std::string translatedPath = TranslateToContentUUID(pathStr, currentlyExecutingMod);
 
-    if (!pathStr.starts_with("$TEMP_DATA")) {
-        if (!pathStr.starts_with("$CONTENT_" + currentlyExecutingMod)) {
-            luaL_error(L, "'%s' is not located in the same content id as the caller", pathStr.data());
-            return 0;
-        }
+    if (!translatedPath.starts_with("$TEMP_DATA")) {
+        if (!translatedPath.starts_with("$CONTENT_" + currentlyExecutingMod))
+            return luaL_error(L, "'%s' is not located in the same content id as the caller", pathStr.data());
     }
 
-    std::string replacedPath = pathStr;
+    std::string replacedPath = translatedPath;
     
     SM::DirectoryManager* directoryManager = SM::DirectoryManager::GetInstance();
     directoryManager->replacePathR(replacedPath);
     
-    if (pathStr == replacedPath) {
-        luaL_error(L, "'%s' is not located in a valid directory", pathStr.data());
-        return 0;
-    }
+    if (translatedPath == replacedPath)
+        return luaL_error(L, "'%s' is not located in a valid directory", translatedPath.data());
 
     lua_getglobal(L, "sm");
     lua_getfield(L, -1, "json");
     lua_getfield(L, -1, "writeJsonString");
     lua_pushvalue(L, 1);
-    if (lua_pcall(L, 1, 1, 0) != LUA_OK) {
-        luaL_error(L, lua_tostring(L, -1));
-        return 0;
-    }
+    if (lua_pcall(L, 1, 1, 0) != LUA_OK)
+        return luaL_error(L, lua_tostring(L, -1));
 
     size_t jsonLength;
     const char* jsonStr = lua_tolstring(L, -1, &jsonLength);
@@ -227,12 +216,29 @@ int hook_sm_json_save(lua_State* L) {
 
     lua_pop(L, 3);
 
-    if (!WriteToFile(replacedPath, StyleJson(data))) {
-		luaL_error(L, "Failed to write to '%s'", replacedPath.data());
-        return 0;
-    }
+    if (!WriteToFile(replacedPath, StyleJson(data)))
+        return luaL_error(L, "Failed to write to '%s'", replacedPath.data());
 
     return 0;
+}
+
+inline static void ApplyPatch(lua_State* L) {
+    lua_getfield(L, -1, "sm");
+    if (!lua_istable(L, -1)) {
+        lua_pop(L, 1);
+        return;
+    }
+
+    lua_pushboolean(L, true);
+    lua_setfield(L, -2, "modTempDataSupport_installed");
+
+    lua_getfield(L, -1, "json");
+    if (lua_istable(L, -1)) {
+        lua_pushcfunction(L, &hook_sm_json_save);
+        lua_setfield(L, -2, "save");
+    }
+
+    lua_pop(L, 2);
 }
 
 using LoadLuaLibFunc = std::add_pointer_t<void(lua_State*)>;
@@ -246,16 +252,15 @@ int hook_lua_env_init(LuaVM* luaVM, LoadLuaLibFunc* loadfuncs, int enviromentFla
 
 	lua_State* L = luaVM->m_luaState;
 
-	lua_getglobal(L, "sm");
-	lua_pushboolean(L, 1);
-	lua_setfield(L, -2, "tempDataMod_installed");
-	lua_pop(L, 1);
+    lua_getglobal(L, "_G");
+    if (lua_istable(L, -1))
+        ApplyPatch(L);
+    lua_pop(L, 1);
 
-	lua_getglobal(L, "unsafe_env");
-	lua_getfield(L, -1, "sm");
-    lua_pushboolean(L, 1);
-    lua_setfield(L, -2, "tempDataMod_installed");
-    lua_pop(L, 2);
+    lua_getglobal(L, "unsafe_env");
+    if (lua_istable(L, -1))
+        ApplyPatch(L);
+    lua_pop(L, 1);
 
     return 0;
 }
@@ -278,51 +283,24 @@ DWORD WINAPI OnProcessAttach(LPVOID lpParam) {
 	}
 
     BYTE* baseAddress = reinterpret_cast<BYTE*>(GetModuleHandle(L"ScrapMechanic.exe"));
-	
-	// sm.json.save hook
-    {
-        LPVOID targetFunction = baseAddress + 0x92A370;
+	LPVOID targetFunction = baseAddress + 0x54A7F0;
+    
+	status = MH_CreateHook(targetFunction, &hook_lua_env_init, reinterpret_cast<LPVOID*>(&GLuaEnvInitOriginal));
+    if (status != MH_OK) {
+        MessageBox(NULL, L"Failed to create Lua Env Init hook.", L"SM-ModTempDataSupport - Hook Creation Error", MB_ICONERROR | MB_OK);
 
-        status = MH_CreateHook(targetFunction, &hook_sm_json_save, nullptr);
-        if (status != MH_OK) {
-            MessageBox(NULL, L"Failed to create sm.json.save hook.", L"SM-ModTempDataSupport - Hook Creation Error", MB_ICONERROR | MB_OK);
+        MH_Uninitialize();
+        FreeLibrary(hModule);
+        return FALSE;
+	}
 
-            MH_Uninitialize();
-            FreeLibrary(hModule);
-            return FALSE;
-        }
+	status = MH_EnableHook(targetFunction);
+    if (status != MH_OK) {
+        MessageBox(NULL, L"Failed to enable Lua Env Init hook.", L"SM-ModTempDataSupport - Hook Enabling Error", MB_ICONERROR | MB_OK);
 
-        status = MH_EnableHook(targetFunction);
-        if (status != MH_OK) {
-            MessageBox(NULL, L"Failed to enable sm.json.save hook.", L"SM-ModTempDataSupport - Hook Enabling Error", MB_ICONERROR | MB_OK);
-
-            MH_Uninitialize();
-            FreeLibrary(hModule);
-            return FALSE;
-        }
-    }
-
-    // Lua Env Init hook
-    {
-		LPVOID targetFunction = baseAddress + 0x54A7F0;
-        
-		status = MH_CreateHook(targetFunction, &hook_lua_env_init, reinterpret_cast<LPVOID*>(&GLuaEnvInitOriginal));
-        if (status != MH_OK) {
-            MessageBox(NULL, L"Failed to create Lua Env Init hook.", L"SM-ModTempDataSupport - Hook Creation Error", MB_ICONERROR | MB_OK);
-
-            MH_Uninitialize();
-            FreeLibrary(hModule);
-            return FALSE;
-		}
-
-		status = MH_EnableHook(targetFunction);
-        if (status != MH_OK) {
-            MessageBox(NULL, L"Failed to enable Lua Env Init hook.", L"SM-ModTempDataSupport - Hook Enabling Error", MB_ICONERROR | MB_OK);
-
-            MH_Uninitialize();
-            FreeLibrary(hModule);
-            return FALSE;
-        }
+        MH_Uninitialize();
+        FreeLibrary(hModule);
+        return FALSE;
     }
 
     GInitalized = true;
